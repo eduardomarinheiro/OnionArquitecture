@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Layers>
+  <Item description="User Interface" abreviation="UI">
+    <Layers>
+      <Item description="MVC" abreviation="MVC"/>
+      <Item description="IOS" abreviation="IOS"/>
+    </Layers>
+  </Item>
+  <Item description="Infrastructure" abreviation="Infra"/>
+  <Item description="Tests" abreviation="Test"/>
+  <Item description="Application" abreviation="Application">
+    <Layers>
+      <Item description="Services" abreviation="Services"/>
+    </Layers>
+  </Item>
+</Layers>
+
+
