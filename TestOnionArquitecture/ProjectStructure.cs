@@ -13,21 +13,20 @@ namespace TestOnionArquitecture
             //ARRANGE
 
             ProjectInfo objProject = new ProjectInfo();
-
+            StructureCreation objCreateStructure = new StructureCreation();
+            
             objProject.Name = "TestProject";
-
-
-
-
-
-
 
 
             //ACT
 
 
 
+
             //ASSERT
+
+            Assert.IsTrue(objCreateStructure.Created);
+
 
 
         }

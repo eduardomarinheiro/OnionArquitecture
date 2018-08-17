@@ -79,7 +79,9 @@
     <Content Include="index.html" />
     <Content Include="Resources\CreateProjectStructure.png" />
     <Content Include="Resources\CreateProjectStructurePackage.ico" />
-    <EmbeddedResource Include="Resources\Information.xml" />
+    <EmbeddedResource Include="Resources\Information.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="stylesheet.css" />
   </ItemGroup>
   <ItemGroup>
