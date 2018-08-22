@@ -74,7 +74,7 @@ namespace OnionArchitecture.Class
                 xmlDoc.Load(this.XmlInformationFile);
                 xmlInformation = true;
             }
-            catch (Exception ex)
+            catch (XmlException ex)
             {
                 throw ex;
             }
@@ -87,40 +87,50 @@ namespace OnionArchitecture.Class
         private void CreateStructure()
         {
             XmlElement root = xmlDoc.DocumentElement;
-            Layer structure = new Layer();
+            Layer _layer = new Layer();
+            List<Layer> _structure = new List<Layer>();
 
             foreach (XmlNode item in root)
             {
-                if (item.Attributes.Count > 0)
-                {
-                    foreach (XmlNode attribute in item.Attributes)
-                    {
-                        if (attribute.Value == "description")
-                        {
-                            structure.Description = attribute.Value;
-                        }
-                        if (attribute.Value == "abreviation")
-                        {
-                            structure.Abreviation = attribute.Value;
-                        }
-                    }
-
-                }
-
-                if (item.HasChildNodes)
-                {
-                    foreach (XmlElement child in item.ChildNodes)
-                    {
-
-                    }
-
-                }
-
-
-
+                _layer = this.ExtractNodes(item);
+                _structure.Add(_layer);
             }
 
 
         }
+
+        private Layer ExtractNodes(XmlNode node)
+        {
+            if (node.Name == "Item")
+            {
+                Layer _node = new Layer();
+
+                if (node.Attributes.Count > 0)
+                {
+                    _node.Description = node.Attributes["description"].Value;
+                    _node.Abreviation = node.Attributes["abreviation"].Value;
+                }
+
+                if (node.HasChildNodes)
+                {
+                    _node.Layers.Add(this.ExtractNodes(node.ChildNodes.Item(0)));
+                }
+
+                return _node;
+            }
+            else
+            {
+                return null;
+            }
+
+
+            
+
+        }
+
+
+
     }
+
 }
+
